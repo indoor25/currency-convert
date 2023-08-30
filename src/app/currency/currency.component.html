@@ -1,0 +1,41 @@
+<div class="container text-center">
+  <h1 class="text-center">Конвертер Валют</h1>
+  <h3 class="text-center">Текущий курс валют</h3>
+  <h3 class="text-center">{{date}}</h3>
+  <div class="wrapper text-center">
+    <ng-container *ngFor=" let currency of mainCurr">
+      <div class="text-center alert alert-secondary currency" role="alert" *ngIf="currency.rate !== 1">
+    <span class="display-5"
+    >1грн = {{currency.rate | number : '1.0-2'}} {{currency.cc}}</span>
+      </div>
+    </ng-container>
+
+    <div class="text-center mt-5">
+      <select [(ngModel)]="firstValue"
+              (change)="resultFunc()"
+              class="me-5 fs-3 p-3 border-0 border-bottom border-black bg-body-secondary input--select"
+              aria-label="Default select example">
+        <option [ngValue]="null"> Выберите валюту</option>
+        <option *ngFor="let item of mainCurr" [value]="item.rate">{{item.txt}}</option>
+      </select>
+      <select [(ngModel)]="secondValue"
+              (change)="resultFunc()"
+              class="fs-3 p-3 border-0 border-bottom border-black bg-body-secondary input--select"
+              aria-label="Default select example">
+        <option [ngValue]="null">Выберите валюту</option>
+        <option *ngFor="let item of mainCurr" [value]="item.rate">{{item.txt}}</option>
+      </select>
+    </div>
+    <div class="text-center"><span class="fs-3">=></span></div>
+    <div class="text-center">
+      <label class="me-5 "><input
+        [(ngModel)]="currValue" (input)="resultFunc()"
+        type="text"
+        class="fs-3 p-3 border-0 border-bottom border-black bg-body-secondary input--value"></label>
+      <label class=""><input
+        disabled [ngModel]="resValue | number:'1.0-2'"
+        type="text"
+        class="fs-3 p-3 border-0 border-bottom border-black bg-body-secondary input--value"></label>
+    </div>
+  </div>
+</div>

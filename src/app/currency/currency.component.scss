@@ -1,0 +1,24 @@
+.input--value {
+  width: 330px;
+
+  &:focus-visible {
+    outline: none !important;
+  }
+}
+
+.input--select {
+  width: 330px;
+
+  &:focus-visible {
+    outline: none !important;
+  }
+}
+
+.currency {
+  max-width: 710px;
+  margin: 30px auto;
+}
+
+.wrapper {
+  min-width: 710px;
+}
